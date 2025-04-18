@@ -1,0 +1,46 @@
+<#
+.SYNOPSIS
+    This PowerShell script configures the lock screen camera policy by modifying the registry to disable camera access from the Windows lock screen.
+
+.NOTES
+    Author          : Joshua Valdez
+    LinkedIn        : in/joshua-valdez-0a7838225
+    GitHub          : github.com/jOshValde
+    Date Created    : 2025-04-18
+    Last Modified   : 2025-04-18
+    Version         : 1.0
+    CVEs            : N/A
+    Plugin IDs      : N/A
+    STIG-ID         : WN10-CC-000005
+
+.TESTED ON
+    Date(s) Tested  : 
+    Tested By       : 
+    Systems Tested  : 
+    PowerShell Ver. :   
+
+.USAGE
+    Put any usage instructions here.
+    Example syntax:
+    PS C:\> .\WN10-CC-000005.ps1 
+
+# STIG WN10-CC-000005: Disable camera access from lock screen
+
+$regPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization"
+$regName = "NoLockScreenCamera"
+$desiredValue = 1
+
+# Create registry path if it doesn't exist
+if (-not (Test-Path $regPath)) {
+    New-Item -Path $regPath -Force | Out-Null
+}
+
+# Set or update the value
+$currentValue = (Get-ItemProperty -Path $regPath -Name $regName -ErrorAction SilentlyContinue).$regName
+
+if ($null -eq $currentValue -or $currentValue -ne $desiredValue) {
+    Set-ItemProperty -Path $regPath -Name $regName -Value $desiredValue -Type DWord
+    Write-Output "Camera access from lock screen has been disabled (NoLockScreenCamera = 1)."
+} else {
+    Write-Output "Camera access from lock screen is already disabled (NoLockScreenCamera = $currentValue)."
+}
