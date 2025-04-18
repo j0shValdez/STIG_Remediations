@@ -22,7 +22,7 @@
 .USAGE
     Put any usage instructions here.
     Example syntax:
-    PS C:\> .\WN10-CC-0003605.ps1 
+    PS C:\> .\WN10-CC-000360.ps1 
 # STIG ID: WN10-CC-000360 - Disallow Digest Authentication in WinRM Client
 
 $regPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WinRM\Client"
