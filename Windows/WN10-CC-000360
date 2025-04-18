@@ -1,4 +1,28 @@
+<#
+.SYNOPSIS
+    This PowerShell script Disallows Digest Authentication in WinRM Client
 
+.NOTES
+    Author          : Joshua Valdez
+    LinkedIn        : in/joshua-valdez-0a7838225
+    GitHub          : github.com/jOshValdez
+    Date Created    : 2025-04-18
+    Last Modified   : 2025-04-18
+    Version         : 1.0
+    CVEs            : N/A
+    Plugin IDs      : N/A
+    STIG-ID         : WN10-CC-000360
+
+.TESTED ON
+    Date(s) Tested  : 
+    Tested By       : 
+    Systems Tested  : 
+    PowerShell Ver. :   
+
+.USAGE
+    Put any usage instructions here.
+    Example syntax:
+    PS C:\> .\WN10-CC-0003605.ps1 
 # STIG ID: WN10-CC-000360 - Disallow Digest Authentication in WinRM Client
 
 $regPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WinRM\Client"
